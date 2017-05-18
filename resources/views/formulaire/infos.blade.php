@@ -22,13 +22,18 @@
 			<input type="text" class="form-control" id="body" name="body">
 		</div>
 
-	  <button type="submit" class="btn btn-primary">Ajouter !</button>
+	  	<div class="form-group">
+			<button type="submit" class="btn btn-primary">Ajouter !</button>
+	  	</div>
+
+		@include('layouts.errors') <!--On inclut le code d'affichage des erreurs-->
 
 	</form>
 
-	<br />
 
-	<a href="{{ url('tasks')}}">Voir les tâches</a>
+	<div class="form-group">
+		<a href="{{ url('tasks')}}">Voir vos tâches</a>
+	</div>
 
 </body>
 

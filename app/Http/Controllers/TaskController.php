@@ -25,6 +25,13 @@ class TaskController extends Controller
     public function store()
     {
 
+        //On veut que le champ soit rempli
+        $this->validate(request(), [ 
+
+            'body' => 'required'
+
+        ]);
+
         Task::create(request(['body']));
 
         $tasks = Task::all();
