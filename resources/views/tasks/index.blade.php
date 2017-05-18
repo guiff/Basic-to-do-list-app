@@ -17,7 +17,7 @@
 
     <br />
     
-    <a href="../public/form">Ajouter une tâche</a>
+    <a href="{{ url('form')}}">Ajouter une tâche</a>
 
 </body>
 

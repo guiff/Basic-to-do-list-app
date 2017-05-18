@@ -17,13 +17,18 @@ class TaskController extends Controller
 	}
 
 
-    public function getInfos()
+    public function create()
     {
     	return view('formulaire.infos');
     }
 
-    public function postInfos(Request $request)
+    public function store()
     {
-    	//Il faut réussir à envoyer ça dans la bdd
+
+        Task::create(request(['body']));
+
+        $tasks = Task::all();
+
+        return view('tasks.index', compact('tasks'));
     }
 }
