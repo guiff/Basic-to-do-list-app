@@ -9,7 +9,8 @@ use App\Task;
 class TaskController extends Controller
 {
     
-	public function index()
+
+	public function index() //Affichage de la liste des tâches
 	{
 		$tasks = Task::all();
 
@@ -17,12 +18,13 @@ class TaskController extends Controller
 	}
 
 
-    public function create()
+    public function create() //Affichage du formulaire pour l'ajout d'une tâche
     {
     	return view('formulaire.infos');
     }
 
-    public function store()
+
+    public function store() //Envoi du formulaire d'ajout de tâche
     {
 
         //On veut que le champ soit rempli
@@ -38,4 +40,11 @@ class TaskController extends Controller
 
         return view('tasks.index', compact('tasks'));
     }
+
+
+    public function show(Task $task) //Affichage d'une tâche précise
+    {
+        return view('tasks.show', compact('task'));
+    }
+
 }
