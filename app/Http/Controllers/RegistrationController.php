@@ -45,8 +45,8 @@ class RegistrationController extends Controller
 
 
     	//On le redirige vers sa to do list
-    	
-    	$tasks = Task::all();
+
+        $tasks = auth()->user()->tasks;
 
     	return view('tasks.index', compact('tasks'));
     }

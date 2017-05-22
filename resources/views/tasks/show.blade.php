@@ -9,13 +9,22 @@
 </head>
 
 <body style = "margin: 30px 0px 0px 50px">
+    
+
+    @if (Auth::check())
+        <a href="#">{{ Auth::user()->name }}</a>
+        <br />
+        <a href="../logout">Déconnexion</a>
+    @endif
+    
+    <hr>
 
     <h1>Votre tâche</h1>
 
     <hr>
 
     <p>
-    {{ $task->body }}
+    <strong>{{ $task->body }}</strong>
     (ajouté {{ $task->created_at->toFormattedDateString() }}) <!--On affiche la date d'ajout de la tâche-->
     </p>
 

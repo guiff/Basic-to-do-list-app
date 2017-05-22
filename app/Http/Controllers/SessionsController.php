@@ -32,7 +32,7 @@ class SessionsController extends Controller
     	}
 
 
-    	$tasks = Task::all();
+        $tasks = auth()->user()->tasks;
 
     	return view('tasks.index', compact('tasks'));
     }

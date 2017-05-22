@@ -10,9 +10,15 @@ class TaskController extends Controller
 {
     
 
+    public function __construct() //L'accès se fait uniquement si l'utilisateur est connecté
+    {
+        $this->middleware('auth');
+    }
+
 	public function index() //Affichage de la liste des tâches
 	{
-		$tasks = Task::all();
+
+        $tasks = auth()->user()->tasks;
 
     	return view('tasks.index', compact('tasks'));
 	}
@@ -27,16 +33,17 @@ class TaskController extends Controller
     public function store() //Envoi du formulaire d'ajout de tâche
     {
 
-        //On veut que le champ soit rempli
-        $this->validate(request(), [ 
+        $this->validate(request(), ['body' => 'required']); //On veut que le champ soit rempli
 
-            'body' => 'required'
 
-        ]);
+        auth()->user()->publish(
 
-        Task::create(request(['body']));
+            new Task(request(['body']))
 
-        $tasks = Task::all();
+        );
+        
+
+        $tasks = auth()->user()->tasks;
 
         return view('tasks.index', compact('tasks'));
     }

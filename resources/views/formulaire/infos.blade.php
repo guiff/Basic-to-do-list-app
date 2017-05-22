@@ -10,6 +10,14 @@
 
 <body style = "margin: 30px 300px 0px 50px">
 	
+    @if (Auth::check())
+        <a href="#">{{ Auth::user()->name }}</a>
+        <br />
+        <a href="logout">Déconnexion</a>
+    @endif
+
+    <hr>
+    
 	<h1>Ajouter une tâche</h1>
 
 	<hr>
@@ -19,7 +27,7 @@
 		{{ csrf_field() }}
 			
 		<div class="form-group">
-			<label for="task">Entrez une nouvelle tâche :</label>
+			<label for="body">Entrez une nouvelle tâche :</label>
 			<input type="text" class="form-control" id="body" name="body">
 		</div>
 
@@ -27,9 +35,10 @@
 			<button type="submit" class="btn btn-primary">Ajouter !</button>
 	  	</div>
 
-		@include('layouts.errors') <!--On inclut le code d'affichage des erreurs-->
-
 	</form>
+
+
+	@include('layouts.errors') <!--On inclut le code d'affichage des erreurs-->
 
 
 	<div class="form-group">
